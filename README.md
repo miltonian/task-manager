@@ -10,6 +10,7 @@
 4. Run `yarn typeorm migration:run` command inside the root directory
 5. Run `yarn dev` command inside the root directory
 6. Cd into the website/ directory and run `yarn start`
+7. Then go to localhost:3000 in your browser
 
 ### Testing
 
