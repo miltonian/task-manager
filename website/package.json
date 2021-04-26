@@ -27,7 +27,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cp env.example.txt .env && react-scripts start",
     "build": "react-scripts build",
     "test": "../node_modules/.bin/jest  --verbose --runInBand",
     "eject": "react-scripts eject"

@@ -41,7 +41,7 @@
    },
    "scripts": {
       "typeorm": "rm -rf dist && tsc && TS_NODE_TRANSPILE_ONLY=true ts-node ./node_modules/typeorm/cli.js",
-      "dev": "nodemon src/index.ts",
+      "dev": "cp env.example.txt .env && nodemon src/index.ts",
       "start": "node dist/index.js",
       "build": "rm -rf dist && tsc",
       "test": "./node_modules/.bin/jest --verbose --runInBand"
