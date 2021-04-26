@@ -17,4 +17,6 @@
 
 ### Testing
 
-To test this project run `yarn test` command inside the root directory
+- To test this project's api, run `yarn test` command inside the root directory
+- To test this project's react website, cd into the website/ directory and run `yarn test` command inside the root directory
+- To reset snapshots, run yarn test -u

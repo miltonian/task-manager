@@ -22,8 +22,8 @@ export const EMPTY_TASK: TaskAPI.UpdateTaskRequest = {
   dueDate: '',
 };
 
-export const PageTask = (props: RouteComponentProps<{ taskId?: string }>) => {
-  const { taskId } = props.match.params;
+export const PageTask = (props: Partial<RouteComponentProps<{ taskId?: string }>>) => {
+  const taskId = props.match?.params?.taskId;
   const [task, setTask] = React.useState<TaskAPI.Task>();
   const [initialCall, setInitialCall] = React.useState<boolean>(false);
 
@@ -93,7 +93,7 @@ export const TaskForm: React.FunctionComponent<{
   };
 
   return (
-    <div>
+    <div className={'task-form'}>
       <Row>
         <Column>
           Name
