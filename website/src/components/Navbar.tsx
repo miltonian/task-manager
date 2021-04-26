@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CACHED_USER } from './Request';
+import { CACHED_USER } from '../Request';
 
 export const Navbar: React.FunctionComponent<{}> = () => {
   return (

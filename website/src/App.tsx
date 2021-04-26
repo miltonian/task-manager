@@ -5,10 +5,10 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { PageHome } from './PageHome';
-import { PageLogin } from './PageLogin';
-import { Navbar } from './Navbar';
-import { PageTask } from './PageTask';
+import { PageHome } from './pages/PageHome';
+import { PageLogin } from './pages/PageLogin';
+import { Navbar } from './components/Navbar';
+import { PageTask } from './pages/PageTask';
 
 export default function App() {
   const UnauthenticatedContainer = () => <Route component={PageLogin} />;

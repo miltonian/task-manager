@@ -2,7 +2,7 @@ import { Button, Input, message, Row, Tabs } from 'antd';
 import { UserPausedDetails } from 'aws-sdk/clients/macie2';
 import React from 'react';
 import styled from 'styled-components';
-import { makeRequest, CACHED_USER } from './Request';
+import { makeRequest, CACHED_USER } from '../Request';
 
 const { TabPane } = Tabs;
 
@@ -43,6 +43,15 @@ const AuthForm: React.FunctionComponent<{ type: AuthType }> = ({ type }) => {
     window.location.href = '/';
   };
 
+  const authButtonClicked = async () => {
+    if (!values.username || !values.password) {
+      return message.warn(`Please fill in all the fields`);
+    }
+    setLoading(true);
+    await onAuth();
+    setLoading(false);
+  };
+
   return (
     <>
       <Row>
@@ -74,14 +83,7 @@ const AuthForm: React.FunctionComponent<{ type: AuthType }> = ({ type }) => {
         loading={loading}
         disabled={loading}
         style={{ width: '100%', margin: 5, marginTop: 10 }}
-        onClick={async () => {
-          if (!values.username || !values.password) {
-            return message.warn(`Please fill in all the fields`);
-          }
-          setLoading(true);
-          await onAuth();
-          setLoading(false);
-        }}
+        onClick={authButtonClicked}
       >
         {type === 'login' ? 'Login' : 'Register'}
       </Button>
