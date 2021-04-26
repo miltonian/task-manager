@@ -1,5 +1,4 @@
 import { Button, Input, message, Row, Tabs } from 'antd';
-import { UserPausedDetails } from 'aws-sdk/clients/macie2';
 import React from 'react';
 import styled from 'styled-components';
 import { makeRequest, CACHED_USER } from '../Request';
@@ -24,31 +23,35 @@ export const PageLogin = () => {
 };
 
 type AuthType = 'login' | 'register';
+export const authenticateUser = async (
+  values: UserAPI.LoginRequest,
+  type: AuthType
+) => {
+  const user = await makeRequest<
+    { token: string; userId: number } | { error: string }
+  >(`/api/auth/${type}`, 'POST', values);
+  if ('error' in user) {
+    return message.error(user.error);
+  }
+
+  localStorage.setItem(CACHED_USER, user.token);
+
+  window.location.href = '/';
+};
+
 const AuthForm: React.FunctionComponent<{ type: AuthType }> = ({ type }) => {
   const [values, setValues] = React.useState<UserAPI.LoginRequest>({
     username: '',
     password: '',
   });
   const [loading, setLoading] = React.useState<boolean>(false);
-  const onAuth = async () => {
-    const user = await makeRequest<
-      { token: string; userId: number } | { error: string }
-    >(`/api/auth/${type}`, 'POST', values);
-    if ('error' in user) {
-      return message.error(user.error);
-    }
-
-    localStorage.setItem(CACHED_USER, user.token);
-
-    window.location.href = '/';
-  };
 
   const authButtonClicked = async () => {
     if (!values.username || !values.password) {
       return message.warn(`Please fill in all the fields`);
     }
     setLoading(true);
-    await onAuth();
+    await authenticateUser(values, type);
     setLoading(false);
   };
 

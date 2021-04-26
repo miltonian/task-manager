@@ -14,7 +14,7 @@ import { Column } from './PageLogin';
 import moment from 'moment';
 import { isEqual } from 'lodash';
 
-const EMPTY_TASK: TaskAPI.UpdateTaskRequest = {
+export const EMPTY_TASK: TaskAPI.UpdateTaskRequest = {
   id: -1,
   name: '',
   description: '',

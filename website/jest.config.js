@@ -6,12 +6,12 @@ module.exports = {
     },
     moduleFileExtensions: ['ts', 'js', 'json', 'jsx', 'tsx'],
     moduleNameMapper: {
-      '^src/(.*)$': '<rootDir>/src/$1',
+      '^src/(.*)$': '<rootDir>/website/src/$1',
     },
     transform: {
       '^.+\\.(ts|tsx)$': 'ts-jest',
     },
-    testMatch: ['**/*.test.ts'],
-    testEnvironment: 'node'
+    testMatch: ['**/*.test.tsx'],
+    testEnvironment: 'jsdom'
   };
   

@@ -45,7 +45,7 @@ export const TaskListItem: React.FunctionComponent<TaskListItemProps> = ({
   );
 };
 
-const formatDueDate = (dueDate: string) => {
+export const formatDueDate = (dueDate: string) => {
   switch (moment(dueDate).endOf('day').diff(moment().endOf('day'), 'days')) {
     case -1:
       return 'Yesterday';

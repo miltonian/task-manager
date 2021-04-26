@@ -27,7 +27,7 @@ export async function makeRequest<T>(
     return { error: `${err}` } as any;
   }
 
-  if (response.status === 401 && window.location.pathname !== '/login') {
+  if (response.status === 401 && window.location.host !== '/login') {
     window.location.href = `/login`;
     throw new Error('Redirecting to login');
   }

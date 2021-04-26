@@ -3,7 +3,7 @@ import { prepareDB } from '../test-helpers';
 import app from '../app';
 import { getRepository } from 'typeorm';
 import { User } from '../entity/User';
-import { hashPassword } from './auth';
+import { hashPassword } from '../routes/auth';
 
 describe('Auth endpoints', () => {
   const USERNAME = 'john.doe';
